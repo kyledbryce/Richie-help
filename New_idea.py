@@ -1,8 +1,35 @@
+class User:
+    Username: str
+    Password: str
+    FirstName: str
+    LastName: str
+    EyeColor : str    
+    def __init__(self, username, password, firstname, lastname, eyeColor):
+        self.Username = username
+        self.Password = password
+        self.FirstName = firstname
+        self.LastName = lastname
+        self.EyeColor = eyeColor
+    def getValue(self):
+        return self.Username
 
-user_database = {"Richard01": ["01", "Richard", "Dalziel", "Blue"],
-                 "Murray02": ["02", "Murrya", "McNicol", "Brown"],
-                 "Marc03": ["03", "Marc", "Sherwood", "Brown"],
-                 "Joe04": ["04", "Joe", "Anderson", "Green"]}
+
+user_database = {}
+user_database['Richard01'] = User("Richard01", "01", "Richard", "Dalziel", "Blue")
+user_database['Murray02'] =User("Murray02", "02", "Murray", "McNicol", "Brown")
+user_database['Marc03'] = User("Marc03", "03", "Marc", "Sherwood", "Brown")
+user_database['Joe04'] = User("Joe04", "04", "Joe", "Anderson", "Green")
+
+
+def print_db():
+    for user in user_database.values():
+        print(user.Username)
+        print(user.Password)
+        print(user.FirstName)
+        print(user.LastName)
+        print(user.EyeColor)
+        
+print_db()
 
 
 def login_register():
@@ -59,7 +86,7 @@ def register():
     first_name = input("please enter your first name: ")
     last_name = input("please enter your last name: ")
     eye_colour = input("please enter your eye colour: ")
-    return user_name, password, first_name, last_name, eye_colour
+    return User(user_name, password, first_name, last_name, eye_colour)
 
 
 login_register()
