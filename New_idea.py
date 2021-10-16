@@ -22,6 +22,7 @@ def login_register():
             access_account(user_name, password)
         elif selection == "B":
             user_name, password = register()
+            user_database[user_name] = password
             access_account(user_name, password)
         else:
             print("Please enter only A or B")
@@ -54,7 +55,6 @@ def access_account(user_name, password):
 def register():
     user_name = input("please register a username of your choice: ")
     password = input("Please create a password: ")
-    #write code that adds login details to the dictionary, "user_database", and then prompts to fill in their user account details.
     print("register", user_name, password, "register")
     return user_name, password
 
