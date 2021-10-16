@@ -1,9 +1,8 @@
-#from Database import user_database (I just copy and pasted Database file below.
 
-user_database = {"Richard01": "01",
-                 "Murray02": "02",
-                 "Marc03": "03",
-                 "Joe04": "04"}
+user_database = {"Richard01": ["01", "Richard", "Dalziel", "Blue"],
+                 "Murray02": ["02", "Murrya", "McNicol", "Brown"],
+                 "Marc03": ["03", "Marc", "Sherwood", "Brown"],
+                 "Joe04": ["04", "Joe", "Anderson", "Green"]}
 
 
 def login_register():
@@ -11,18 +10,21 @@ def login_register():
     account_blocked = False
     user_name = ""
     password = ""
+    first_name = ""
+    last_name = ""
+    eye_colour = ""
     while selection != ("A" or "B") and not account_blocked:
         selection = input("Hi There. Please sign into your account, or sign up with us.\nSelect A or B\n\nA - Sign in\nB - Register\n\n").upper()
         if selection == "A":
-            user_name, password = sign_in()
-            print("login register", user_name, password, "login register")
+            user_name, password, first_name, last_name, eye_colour = sign_in()
             if user_name == None:
                 account_blocked = True
                 break
             access_account(user_name, password)
         elif selection == "B":
-            user_name, password = register()
-            user_database[user_name] = password
+            user_name, password, first_name, last_name, eye_colour = register()
+            user_database[user_name] = [password, first_name, last_name, eye_colour]
+            print(user_database.items())
             access_account(user_name, password)
         else:
             print("Please enter only A or B")
@@ -48,15 +50,16 @@ def sign_in():
 
 
 def access_account(user_name, password):
-    #write code that displays info about about user's account, and options to change: password, names, date of birth etc.
     print("access account", user_name, password, "access account")
 
 
 def register():
     user_name = input("please register a username of your choice: ")
     password = input("Please create a password: ")
-    print("register", user_name, password, "register")
-    return user_name, password
+    first_name = input("please enter your first name: ")
+    last_name = input("please enter your last name: ")
+    eye_colour = input("please enter your eye colour: ")
+    return user_name, password, first_name, last_name, eye_colour
 
 
 login_register()
