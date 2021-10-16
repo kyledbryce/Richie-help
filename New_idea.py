@@ -10,8 +10,6 @@ class User:
         self.FirstName = firstname
         self.LastName = lastname
         self.EyeColor = eyeColor
-    def getValue(self):
-        return self.Username
 
 
 user_database = {}
